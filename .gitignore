@@ -1,0 +1,19 @@
+# 백엔드 관련
+backend/.gradle/
+backend/build/
+backend/out/
+backend/.idea/
+backend/*.iml
+backend/src/main/resources/dbconfig.properties
+backend/docker-compose.override.yml
+backend/.env
+
+# 프론트엔드 관련
+frontend/node_modules/
+frontend/.next/
+frontend/.cache/
+frontend/.env
+
+# OS / 기타
+.DS_Store
+*.log
