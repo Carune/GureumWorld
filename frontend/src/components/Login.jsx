@@ -20,11 +20,11 @@ const Login = () => {
             <h1 className="login__title">구름월드 입장</h1>
             <div className="login__box">
               <i className="bx bx-user login__icon"></i>
-              <input type="text" placeholder="Username" className="login__input" />
+              <input type="text" placeholder="아이디" className="login__input" />
             </div>
             <div className="login__box">
               <i className="bx bx-lock login__icon"></i>
-              <input type="password" placeholder="Password" className="login__input" />
+              <input type="password" placeholder="비밀번호" className="login__input" />
             </div>
             <a href="#" className="login__forgot">
               비밀번호를 잊으셨나요?
