@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.OutputKeys;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -25,5 +28,18 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         String token = userService.authenticate(loginRequest);
         return ResponseEntity.ok().body(token);
+    }
+
+    @GetMapping("/checkId")
+    public ResponseEntity<Map<String, Object>> checkId(@RequestParam String loginId) {
+        boolean isExist = userService.checkId(loginId);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("available", !isExist);
+        response.put("message", isExist ? "이미 사용 중인 아이디입니다." : "사용 가능한 아이디입니다.");
+
+        return ResponseEntity
+                .status(isExist ? HttpStatus.CONFLICT : HttpStatus.OK)
+                .body(response);
     }
 }

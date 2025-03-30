@@ -13,12 +13,13 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     @Id
+    private String loginId;
     private String username;
     private String password;
     private String email;
-    private String roles;
-    private String type;
+    private String role = "ROLE_USER";
+    private String type = "BASIC";
 }

@@ -25,4 +25,8 @@ public class UserService {
 
         return jwtUtil.generateToken(user.getUsername());
     }
+
+    public boolean checkId(String loginId) {
+       return userRepository.existsById(loginId);
+    }
 }
