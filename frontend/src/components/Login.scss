@@ -118,6 +118,69 @@ img{
   color: $color-light;
 }
 
+.password-box {
+  position: relative;
+
+  .toggle-password {
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    color: $color-light;
+    cursor: pointer;
+  }
+
+  .valid-check {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 1.2rem;
+  }
+}
+
+.login__box--id {
+  display: flex;
+  align-items: center;
+
+  .login__id-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .login__input {
+    flex: 1;
+  }
+
+  .check-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+    background-color: $color;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
 .login{
   display:flex;
   height:100vh;
