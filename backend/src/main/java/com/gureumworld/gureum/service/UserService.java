@@ -2,6 +2,7 @@ package com.gureumworld.gureum.service;
 
 import com.gureumworld.gureum.config.JwtUtil;
 import com.gureumworld.gureum.dto.LoginRequest;
+import com.gureumworld.gureum.dto.SignUpRequest;
 import com.gureumworld.gureum.entity.User;
 import com.gureumworld.gureum.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,4 +30,22 @@ public class UserService {
     public boolean checkId(String loginId) {
        return userRepository.existsById(loginId);
     }
+
+    public void signUp(SignUpRequest dto) {
+        if (userRepository.existsById(dto.getLoginId())) {
+            throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
+        }
+
+        User user = User.builder()
+                .loginId(dto.getLoginId())
+                .username(dto.getUsername())
+                .password(passwordEncoder.encode(dto.getPassword()))
+                .email(dto.getEmail())
+                .role("ROLE_USER")
+                .type("LOCAL")
+                .build();
+
+        userRepository.save(user);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.gureumworld.gureum.controller;
 
 import com.gureumworld.gureum.config.JwtUtil;
 import com.gureumworld.gureum.dto.LoginRequest;
+import com.gureumworld.gureum.dto.SignUpRequest;
 import com.gureumworld.gureum.entity.User;
 import com.gureumworld.gureum.repository.UserRepository;
 import com.gureumworld.gureum.service.UserService;
@@ -41,5 +42,17 @@ public class AuthController {
         return ResponseEntity
                 .status(isExist ? HttpStatus.CONFLICT : HttpStatus.OK)
                 .body(response);
+    }
+
+    @PostMapping("/signUp")
+    public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
+        try {
+            userService.signUp(signUpRequest);
+            return ResponseEntity.ok("회원가입 성공");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("서버 오류로 회원가입 실패");
+        }
     }
 }
